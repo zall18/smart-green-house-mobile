@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".LampActivity"
+            android:exported="false" />
+        <activity
             android:name=".SoilMoistureActivity"
             android:exported="false" />
         <activity

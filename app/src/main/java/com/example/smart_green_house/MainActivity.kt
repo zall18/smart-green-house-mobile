@@ -31,9 +31,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        var suhu: TextView = findViewById(R.id.tvTemperature)
-        var kelembapan: TextView = findViewById(R.id.tvHumidity)
-
 
         var temperaturActiv: LinearLayout = findViewById(R.id.temperatureActiv)
         var humidityActiv: LinearLayout = findViewById(R.id.humadityActiv)
@@ -57,51 +54,5 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(Intent(applicationContext, Lam))
         }
 
-        handler = Handler(Looper.getMainLooper())
-
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                // Panggil API suhu
-                RetrofitClient.instance.getSuhu().enqueue(object : Callback<SuhuResponse> {
-                    override fun onResponse(call: Call<SuhuResponse>, response: Response<SuhuResponse>) {
-                        if (response.isSuccessful) {
-                            val data = response.body()
-                            suhu.text = data?.suhu
-                        } else {
-                            Log.d("Data", "onResponse: Gagal")
-                        }
-                    }
-
-                    override fun onFailure(call: Call<SuhuResponse>, t: Throwable) {
-                        t.printStackTrace()
-                    }
-                })
-
-                // Panggil API kelembapan
-                RetrofitClient.instance.getkelembapan().enqueue(object : Callback<KelembapanResponse> {
-                    override fun onResponse(call: Call<KelembapanResponse>, response: Response<KelembapanResponse>) {
-                        if (response.isSuccessful) {
-                            val data = response.body()
-                            kelembapan.text = data?.kelembapan
-                        } else {
-                            Log.d("Data", "onResponse: Gagal")
-                        }
-                    }
-
-                    override fun onFailure(call: Call<KelembapanResponse>, t: Throwable) {
-                        t.printStackTrace()
-                    }
-                })
-
-                // Panggil ulang runnable ini setelah 1 detik
-                handler.postDelayed(this, delay)
-            }
-        }, delay)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        // Hentikan handler saat activity dihancurkan
-        handler.removeCallbacksAndMessages(null)
     }
 }
