@@ -6,4 +6,6 @@
     <color name="end_color">#DC96C3</color>
     <color name="blue_color">#e1f6f4</color>
     <color name="main_color">#F1F5FB</color>
+    <color name="red">#FF1F1F</color>
+    <color name="green">#4CFF00</color>
 </resources>

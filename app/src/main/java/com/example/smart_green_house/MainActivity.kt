@@ -1,5 +1,6 @@
 package com.example.smart_green_house
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -38,20 +39,41 @@ class MainActivity : AppCompatActivity() {
         var lampActiv: LinearLayout = findViewById(R.id.lampActiv)
 
         temperaturActiv.setOnClickListener {
-            startActivity(Intent(applicationContext, TemperatureActivity::class.java))
+            val options = ActivityOptions.makeCustomAnimation(
+                this,
+                R.anim.slide_right_in,  // Animasi untuk Activity yang baru
+                R.anim.slide_out_left   // Animasi untuk Activity yang ditinggalkan
+            )
+            startActivity(Intent(applicationContext, TemperatureActivity::class.java), options.toBundle())
+
 
         }
 
         humidityActiv.setOnClickListener {
-            startActivity(Intent(applicationContext, HumidityActivity::class.java))
+            val options = ActivityOptions.makeCustomAnimation(
+                this,
+                R.anim.slide_right_in,  // Animasi untuk Activity yang baru
+                R.anim.slide_out_left   // Animasi untuk Activity yang ditinggalkan
+            )
+            startActivity(Intent(applicationContext, HumidityActivity::class.java), options.toBundle())
         }
 
         soilMostureActiv.setOnClickListener {
-            startActivity(Intent(applicationContext, SoilMoistureActivity::class.java))
+            val options = ActivityOptions.makeCustomAnimation(
+                this,
+                R.anim.slide_right_in,  // Animasi untuk Activity yang baru
+                R.anim.slide_out_left   // Animasi untuk Activity yang ditinggalkan
+            )
+            startActivity(Intent(applicationContext, SoilMoistureActivity::class.java), options.toBundle())
         }
 
         lampActiv.setOnClickListener {
-//            startActivity(Intent(applicationContext, Lam))
+            val options = ActivityOptions.makeCustomAnimation(
+                this,
+                R.anim.slide_right_in,  // Animasi untuk Activity yang baru
+                R.anim.slide_out_left   // Animasi untuk Activity yang ditinggalkan
+            )
+            startActivity(Intent(applicationContext, LampActivity::class.java), options.toBundle())
         }
 
     }
