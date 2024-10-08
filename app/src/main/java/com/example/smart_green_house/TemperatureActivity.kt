@@ -43,7 +43,7 @@ class TemperatureActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<SuhuResponse>, response: Response<SuhuResponse>) {
                         if (response.isSuccessful) {
                             val data = response.body()
-                            suhu.text = data?.temperature
+                            suhu.text = data?.temperature + "°c"
                         } else {
                             Log.d("Data", "onResponse: Gagal")
                         }

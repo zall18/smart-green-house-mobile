@@ -45,7 +45,7 @@ class HumidityActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<KelembapanResponse>, response: Response<KelembapanResponse>) {
                         if (response.isSuccessful) {
                             val data = response.body()
-                            kelembapan.text = data?.humidity
+                            kelembapan.text = data?.humidity + "%"
                         } else {
                             Log.d("Data", "onResponse: Gagal")
                         }
